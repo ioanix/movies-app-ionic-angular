@@ -16,13 +16,26 @@ export class MoviesComponent {
 
   ionViewWillEnter() {
 
-    this.apiService.get('api/Movie').subscribe((movies: Movie[]) => {
-      this.movies = movies;
-    });
+    this.loadMovies();
   }
 
   goToAddMovie() {
 
     this.router.navigateByUrl('movies/add');
+  }
+
+  deleteMovie(movie: Movie) {
+
+    this.apiService.delete('api/movie/' + movie.id).subscribe(() => {
+
+      this.loadMovies();
+    });
+  }
+
+  private loadMovies() {
+
+    this.apiService.get('api/Movie').subscribe((movies: Movie[]) => {
+      this.movies = movies;
+    });
   }
 }
