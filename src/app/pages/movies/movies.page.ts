@@ -5,10 +5,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss'],
+  templateUrl: './movies-page.page.html',
+  styleUrls: ['./movies-page.page.scss'],
 })
-export class MoviesComponent {
+export class MoviesPage {
 
   movies: Movie[];
 
