@@ -1,5 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
+import {Login} from '../../models/login.model';
+import {ApiService} from '../../services/api.service';
+import {AuthResponse} from '../../models/auth.model';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +13,19 @@ import {Router} from '@angular/router';
 })
 export class LoginPage {
 
-  constructor(private router: Router) {}
+  loginData = new Login();
+
+  constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
+  }
 
   login() {
 
-    this.router.navigateByUrl('movies');
+    this.apiService.post('api/authentication/login', this.loginData)
+      .subscribe((response: AuthResponse) => {
+
+        this.authService.saveToken(response.token);
+        this.router.navigateByUrl('/movies');
+      });
   }
 }
 

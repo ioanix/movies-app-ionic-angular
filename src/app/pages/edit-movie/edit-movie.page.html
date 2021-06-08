@@ -1,38 +1,42 @@
-<app-navbar [pageName]="'Add Movie'"></app-navbar>
+<app-navbar [pageName]="'Edit Movie'"></app-navbar>
 <ion-content>
-  <div class="form-wrapper">
+  <div>
     <form>
       <ion-item>
-        <ion-label>Title</ion-label>
+        <ion-label>Title: </ion-label>
         <ion-input type="text" [(ngModel)]="movie.title" name="title"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Description</ion-label>
+        <ion-label>Description: </ion-label>
         <ion-input type="text" [(ngModel)]="movie.description" name="description"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Genre</ion-label>
-        <ion-select interface="popover" [(ngModel)]="movie.genre" name="genre">
-          <ion-select-option *ngFor="let option of MOVIE_GENRES" [value]="option">
+        <ion-label>Movie Genre: </ion-label>
+        <ion-select interface="popover"
+                    [(ngModel)]="movie.genre"
+                    name="genre">
+          <ion-select-option *ngFor="let option of MOVIE_GENRES"
+                             [value]="option">
             {{option}}
           </ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>Duration</ion-label>
-        <ion-input type="number" [(ngModel)]="movie.duration" name="duration"></ion-input>
+        <ion-label>Duration: </ion-label>
+        <ion-input type="number" [(ngModel)]="movie.duration" name="durationInMinutes"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Year of release</ion-label>
         <ion-input type="text" [(ngModel)]="movie.yearOfRelease" name="yearOfRelease"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Director</ion-label>
+        <ion-label>Director: </ion-label>
         <ion-input type="text" [(ngModel)]="movie.director" name="director"></ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-label>Rating</ion-label>
-        <ion-input type="text" [(ngModel)]="movie.rating" name="rating"></ion-input>
+        <ion-label>Rating: </ion-label>
+        <ion-input type="number" [(ngModel)]="movie.rating" name="rating"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Watched</ion-label>
@@ -41,10 +45,7 @@
     </form>
   </div>
 </ion-content>
-
 <ion-footer>
-  <ion-button (click)="addMovie()">Add movie</ion-button><br>
-<!--  <ion-button (click)="backToMovies()">Back to movies</ion-button>-->
-  <ion-button color="secondary" [routerLink]="'/movies'">Back to movies</ion-button>
+  <ion-button expand="block" (click)="editMovie(movie)">Edit movie</ion-button>
+  <ion-button expand="block" color="secondary" [routerLink]="'/movies'">Back to movies</ion-button>
 </ion-footer>
-

@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApiService {
-  apiUrl = 'https://localhost:5001/';
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  API_URL = 'https://localhost:5001/';
   constructor(private httpClient: HttpClient) {}
 
   get(path: string, params?: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.httpClient.get(`${this.apiUrl}${path}`, {
+    return this.httpClient.get(`${this.API_URL}${path}`, {
       headers,
       params: this.toHttpParams(params),
     });
@@ -18,7 +20,7 @@ export class ApiService {
   post(path: string, body = {}): Observable<any> {
     const headers = this.getHeaders();
     return this.httpClient.post(
-      `${this.apiUrl}${path}`,
+      `${this.API_URL}${path}`,
       JSON.stringify(body),
       { headers }
     );
@@ -26,14 +28,14 @@ export class ApiService {
 
   put(path: string, body = {}): Observable<any> {
     const headers = this.getHeaders();
-    return this.httpClient.put(`${this.apiUrl}${path}`, JSON.stringify(body), {
+    return this.httpClient.put(`${this.API_URL}${path}`, JSON.stringify(body), {
       headers,
     });
   }
 
   delete(path: string, params?: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.httpClient.delete(`${this.apiUrl}${path}`, {
+    return this.httpClient.delete(`${this.API_URL}${path}`, {
       headers,
       params: this.toHttpParams(params),
     });

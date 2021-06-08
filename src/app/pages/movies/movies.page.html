@@ -8,21 +8,15 @@
       <ion-label>
         title: {{movie.title}}
       </ion-label>
-      <ion-label>
-        description: {{movie.description}}
-      </ion-label>
-      <ion-label>
-        genre: {{movie.genre}}
-      </ion-label>
-      <ion-label>
-        director: {{movie.director}}
-      </ion-label>
-      <ion-label>
-        rating: {{movie.rating}}
-      </ion-label>
 
       <button ion-button icon-only (click)="deleteMovie(movie)">
         <ion-icon name="trash-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="goToEditMovie(movie)">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="goToDetails(movie)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
       </button>
 
     </ion-item>

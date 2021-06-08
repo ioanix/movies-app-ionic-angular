@@ -1,13 +1,13 @@
 export class Movie {
 
   id: number;
-  title: string;
-  description: string;
+  title = '';
+  description = '';
   genre: Genre;
   duration: number;
   yearOfRelease: number;
   director: string;
-  dateAdded: string;
+  dateAdded: number;
   rating: number;
   watched: string;
 
@@ -21,7 +21,7 @@ export enum Genre {
   thriller
 }
 
-export const movieGenres = ['action', 'comedy', 'horror', 'thriller'];
+export const MOVIE_GENRES = ['action', 'comedy', 'horror', 'thriller'];
 
 
 

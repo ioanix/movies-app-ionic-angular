@@ -1,25 +1,34 @@
-import {Component} from '@angular/core';
 import {Movie, MOVIE_GENRES} from '../../models/movie.model';
 import {ApiService} from '../../services/api.service';
 import {AlertController, NavController} from '@ionic/angular';
+import {ActivatedRoute} from '@angular/router';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-add-movie',
-  templateUrl: './add-movie.page.html',
-  styleUrls: ['./add-movie.page.scss'],
+  selector: 'app-edit-movie',
+  templateUrl: 'edit-movie.page.html',
 })
-export class AddMoviePage {
-
+export class EditMoviePage {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   MOVIE_GENRES = MOVIE_GENRES;
 
   movie = new Movie();
 
-  constructor(private apiService: ApiService, private navCtrl: NavController, private alertCtrl: AlertController) {
+  constructor(
+    private apiSvc: ApiService,
+    private navCtrl: NavController,
+    private alertCtrl: AlertController,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      if (params && params.special) {
+        this.movie = JSON.parse(params.special);
+      }
+    });
   }
 
-  addMovie() {
-    this.apiService.post('api/Movie', this.movie).subscribe(
+  editMovie(movie: Movie) {
+    this.apiSvc.put(`api/Movie/${this.movie.id}`, movie).subscribe(
       () => {
         this.navCtrl.back();
       },
@@ -40,3 +49,4 @@ export class AddMoviePage {
     );
   }
 }
+

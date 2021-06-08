@@ -2,10 +2,13 @@
   <ion-content>
     <ion-list>
       <ion-menu-toggle auto-hide="true">
-        <ion-item>My movies</ion-item>
+        <ion-item [routerLink]="'/movies'">My movies</ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle auto-hide="true">
-        <ion-item>Logout</ion-item>
+        <ion-item [routerLink]="'/reservations'">My reservations</ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item (click)="logOut()">Logout</ion-item>
       </ion-menu-toggle>
 
     </ion-list>

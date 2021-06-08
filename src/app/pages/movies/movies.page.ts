@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {Movie} from '../../models/movie.model';
 import {ApiService} from '../../services/api.service';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-movies',
-  templateUrl: './movies-page.page.html',
-  styleUrls: ['./movies-page.page.scss'],
+  templateUrl: './movies.page.html',
+  styleUrls: ['./movies.page.scss'],
 })
 export class MoviesPage {
 
@@ -37,5 +37,26 @@ export class MoviesPage {
     this.apiService.get('api/Movie').subscribe((movies: Movie[]) => {
       this.movies = movies;
     });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  goToDetails(movie: Movie) {
+
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(movie),
+      },
+    };
+    this.router.navigate(['movies/details'], navigationExtras);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  goToEditMovie(movie) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(movie),
+      },
+    };
+    this.router.navigate(['movies/edit'], navigationExtras);
   }
 }

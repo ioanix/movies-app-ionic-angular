@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {LoginPage} from './pages/login/login.page';
-import {MoviesComponent} from './pages/movies/movies.component';
-import {AddMovieComponent} from './pages/add-movie/add-movie.component';
+import {MoviesPage} from './pages/movies/movies.page';
+import {AddMoviePage} from './pages/add-movie/add-movie.page';
+import {ReservationsPage} from './pages/reservations/reservations.page';
+import {DetailsMoviePage} from './pages/movie-details/movie-details.page';
+import {EditMoviePage} from "./pages/edit-movie/edit-movie.page";
 
 const routes: Routes = [
   {
@@ -11,11 +14,23 @@ const routes: Routes = [
   },
   {
     path: 'movies',
-    component: MoviesComponent,
+    component: MoviesPage,
   },
   {
     path: 'movies/add',
-    component: AddMovieComponent,
+    component: AddMoviePage,
+  },
+  {
+    path: 'movies/details',
+    component: DetailsMoviePage,
+  },
+  {
+    path: 'movies/edit',
+    component: EditMoviePage,
+  },
+  {
+    path: 'reservations',
+    component: ReservationsPage,
   },
   {
     path: '',
